@@ -31,9 +31,11 @@ namespace DemoApi.Controllers
 
         // GET api/<PersonController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public async Task<PersonModel> Get(int id)
         {
-            return "value";
+            PersonModel result = await _mediator.Send(new GetPersonByIdQuery(id));
+
+            return result;
         }
 
         // POST api/<PersonController>
