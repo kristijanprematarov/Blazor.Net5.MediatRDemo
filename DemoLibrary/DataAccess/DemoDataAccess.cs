@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using DemoLibrary.DataAccess.Models;
+using System.Threading.Tasks;
+using DemoLibrary.Models;
 
 namespace DemoLibrary.DataAccess
 {
@@ -14,12 +15,12 @@ namespace DemoLibrary.DataAccess
             people.Add(new PersonModel() { Id = 2, FirstName = "Ivana", LastName = "Kocevska" });
         }
 
-        public List<PersonModel> GetPeople()
+        public async Task<List<PersonModel>> GetPeople()
         {
-            return people;
+            return await Task.FromResult(people);
         }
 
-        public PersonModel InsertPerson(string firstName, string lastName)
+        public async Task<PersonModel> InsertPerson(string firstName, string lastName)
         {
             PersonModel p = new()
             {
@@ -30,7 +31,7 @@ namespace DemoLibrary.DataAccess
 
             people.Add(p);
 
-            return p;
+            return await Task.FromResult(p);
         }
     }
 }

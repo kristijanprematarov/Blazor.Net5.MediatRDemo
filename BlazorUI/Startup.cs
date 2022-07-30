@@ -10,6 +10,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DemoLibrary.DataAccess;
+using DemoLibrary.Marker;
+using MediatR;
 
 namespace BlazorUI
 {
@@ -29,6 +32,9 @@ namespace BlazorUI
             services.AddRazorPages();
             services.AddServerSideBlazor();
             services.AddSingleton<WeatherForecastService>();
+            services.AddSingleton<IDataAccess, DemoDataAccess>();
+            string assemblyName = typeof(ApplicationAssembly).Assembly.GetName().Name;//DemoLibrary
+            services.AddMediatR(typeof(ApplicationAssembly).Assembly);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

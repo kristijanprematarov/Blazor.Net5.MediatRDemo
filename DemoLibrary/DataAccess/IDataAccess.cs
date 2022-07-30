@@ -1,11 +1,12 @@
-﻿using DemoLibrary.DataAccess.Models;
+﻿using DemoLibrary.Models;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace DemoLibrary.DataAccess
 {
     public interface IDataAccess
     {
-        List<PersonModel> GetPeople();
-        PersonModel InsertPerson(string firstName, string lastName);
+        Task<List<PersonModel>> GetPeople();
+        Task<PersonModel> InsertPerson(string firstName, string lastName);
     }
 }
