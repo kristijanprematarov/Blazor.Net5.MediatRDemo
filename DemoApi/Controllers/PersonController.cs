@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using DemoLibrary.Commands;
 using DemoLibrary.Models;
 using DemoLibrary.Queries;
 using MediatR;
@@ -40,8 +41,11 @@ namespace DemoApi.Controllers
 
         // POST api/<PersonController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public async Task<PersonModel> Post(PersonModel personModel)
         {
+            PersonModel result = await _mediator.Send(new InsertPersonCommand(personModel.FirstName, personModel.LastName));
+
+            return result;
         }
     }
 }
