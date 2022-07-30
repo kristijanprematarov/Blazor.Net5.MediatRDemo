@@ -4,4 +4,20 @@
 
 Welcome to your new app.
 
-<SurveyPrompt Title="How is Blazor working for you?" />
+<ul>
+    @foreach (var person in people)
+    {
+        <li>@person.FirstName @person.LastName</li>
+    }
+</ul>
+
+@code
+{
+    List<PersonModel> people;
+
+    protected override Task OnInitializedAsync()
+    {
+        throw new NotImplementedException();
+        //GET LIST OF PEOPLE
+    }
+}

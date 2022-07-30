@@ -4,7 +4,7 @@ using DemoLibrary.DataAccess.Models;
 
 namespace DemoLibrary.DataAccess
 {
-    public class DemoDataAccess
+    public class DemoDataAccess : IDataAccess
     {
         private List<PersonModel> people = new();
 
